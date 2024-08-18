@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* tailwind.css or your custom CSS file */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+.hover-underline::before,
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  height: 2px; /* Initial thickness */
+  background-color: transparent; /* Start with transparent */
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.hover-underline::before {
+  left: 0;
+}
+
+.hover-underline::after {
+  right: 0;
+}
+
+.hover-underline:hover::before,
+.hover-underline:hover::after {
+  width: calc(100% - 1px); /* Expand width to 100% - 1px */
+  background-color: #6B46C1; /* Same color as the button background */
+}
+
+.hover-underline:hover::before {
+  width: calc(100% + 1px); /* Increase width by 1px */
+}
