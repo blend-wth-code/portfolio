@@ -31,7 +31,7 @@ body {
     text-wrap: balance;
   }
 }
-/* tailwind.css or your custom CSS file */
+
 .hover-underline {
   position: relative;
   text-decoration: none;
@@ -45,8 +45,8 @@ body {
   position: absolute;
   bottom: -2px;
   width: 0;
-  height: 2px; /* Initial thickness */
-  background-color: transparent; /* Start with transparent */
+  height: 2px;
+  background-color: transparent;
   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
@@ -60,10 +60,59 @@ body {
 
 .hover-underline:hover::before,
 .hover-underline:hover::after {
-  width: calc(100% - 1px); /* Expand width to 100% - 1px */
-  background-color: #6B46C1; /* Same color as the button background */
+  width: calc(100% - 1px);
+  background-color: #6B46C1;
 }
 
+/* Sliding animations for the sections */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s ease-out;
+}
+
+
 .hover-underline:hover::before {
-  width: calc(100% + 1px); /* Increase width by 1px */
+  width: calc(100% + 1px);
+}
+
+@media (max-width: 768px) {
+  .translate-x-0 {
+    transform: translateX(0);
+  }
+  
+  .-translate-x-full {
+    transform: translateX(-100%);
+  }
+
+  .border-blue-500 {
+    border: none;
+  }
+  .border-animation {
+    animation: none;
+  }
 }

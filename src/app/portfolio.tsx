@@ -1,7 +1,7 @@
-"use client"; // Add this line to mark the component as a Client Component
+"use client"; 
 
 import { useState, useEffect } from 'react';
-import BorderImage from './Image'; // Adjust the path to match your structure
+import BorderImage from './Image'; 
 
 type Project = {
   id: number;
@@ -26,7 +26,6 @@ const projects: Project[] = [
     desc: "Description for project name 2",
     type: "Website"
   },
-  // Add more projects as needed
 ];
 
 const Portfolio: React.FC = () => {
@@ -47,7 +46,7 @@ const Portfolio: React.FC = () => {
   return (
     <div className="bg-dark text-white p-4 mt-20">
       <h1 className="text-3xl text-center font-bold mb-4">PORTFOLIO</h1>
-      <div className="flex justify-center mb-8 space-x-4">
+      <div className="flex justify-center mb-8 space-x-4 md:space-x-12">
         {searchOptions.map(option => (
           <div
             key={option}
@@ -69,14 +68,14 @@ const ProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
       {projects.map((project, index) => (
         <div
           key={project.id}
-          className={`flex mb-8 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`}
+          className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} mb-24`}
         >
-          <div className="flex-1 p-4">
-            <h2 className="text-2xl font-bold">{project.name}</h2>
-            <p>{project.desc}</p>
+          <div className="flex-1 ml-12 relative">
+            <h2 className="text-3xl font-bold mb-4">{project.name}</h2>
+            <p className="mb-4">{project.desc}</p>
             <a href={project.url} className="text-blue-500">Read more</a>
           </div>
-          <div className="flex-1 p-4">
+          <div className="flex-1">
             <BorderImage src="/designer.png" alt={project.name} />
           </div>
         </div>
